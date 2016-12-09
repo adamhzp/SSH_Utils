@@ -18,7 +18,6 @@ except NameError:
 	raw_input = input
 
 
-USAGE = '''passmass host1 host2 host3 . . .'''
 COMMAND_PROMPT = '[$#] '
 TERMINAL_PROMPT = r'Terminal type\?'
 TERMINAL_TYPE = 'vt100'
@@ -40,7 +39,7 @@ def login(host, user, password):
 		child.sendline ('yes')
 		child.expect ('[Pp]assword: ')
 	child.sendline(password)
-    # Now we are either at the command prompt or
+    # Either at the command prompt or
     # the login process is asking for our terminal type.
 	i = child.expect (['Permission denied', TERMINAL_PROMPT, COMMAND_PROMPT])
 	if i == 0:
